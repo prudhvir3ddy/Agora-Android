@@ -3,29 +3,51 @@ package org.aossie.agoravote;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.StringRequestListener;
 
-public class MainActivity extends AppCompatActivity {
+import org.json.JSONException;
+import org.json.JSONObject;
 
-    SharedPrefs sharedPrefs;
+public class SignUpActivity extends AppCompatActivity {
+
+    private EditText mUserNameEditText, mFirstNameEditText, mLastNameEditText, mEmailEditText, mPasswordEditText;
+    private Button mSignUpButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        sharedPrefs = new SharedPrefs(getApplicationContext());
-        Log.d("heyuser", sharedPrefs.getLogedInKey());
-        doSignOut();
+        setContentView(R.layout.activity_sign_up);
+        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doSignUp();
+            }
+        });
 
     }
 
-    private void doSignOut() {
+    private void doSignUp() {
+        JSONObject jsonObject = new JSONObject();
+        try {
+            jsonObject.put("firstName", mFirstNameEditText.getText().toString());
+            jsonObject.put("lastName", mLastNameEditText.getText().toString());
+            jsonObject.put("email", mEmailEditText.getText().toString());
+            jsonObject.put("password", mPasswordEditText.getText().toString());
+            jsonObject.put("identifier", mUserNameEditText.getText().toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-        AndroidNetworking.get("https://agora-rest-api.herokuapp.com/api/v1/user/logout")
-                .addHeaders("X-Auth-Token", sharedPrefs.getLogedInKey())// posting json
+        AndroidNetworking.post("https://agora-rest-api.herokuapp.com/api/v1/auth/signup")
+                .addJSONObjectBody(jsonObject)// posting json
+                .addHeaders("Content-Type", "application/json")
                 .addHeaders("accept", "application/json")
                 .setPriority(Priority.MEDIUM)
                 .build()
@@ -34,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // do anything with response
                         Log.d("response", "" + response);
-                        finish();
                     }
 
                     @Override
