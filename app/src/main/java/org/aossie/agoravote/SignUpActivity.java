@@ -3,6 +3,7 @@ package org.aossie.agoravote;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,13 @@ public class SignUpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        mUserNameEditText = findViewById(R.id.username);
+        mFirstNameEditText = findViewById(R.id.firstname);
+        mLastNameEditText = findViewById(R.id.lastname);
+        mEmailEditText = findViewById(R.id.email);
+        mPasswordEditText = findViewById(R.id.password);
+        mSignUpButton = findViewById(R.id.signup);
+
         mSignUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,6 +64,7 @@ public class SignUpActivity extends AppCompatActivity {
                     public void onResponse(String response) {
                         // do anything with response
                         Log.d("response", "" + response);
+
                     }
 
                     @Override
@@ -69,4 +78,23 @@ public class SignUpActivity extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
+

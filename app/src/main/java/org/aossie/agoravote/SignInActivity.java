@@ -2,8 +2,10 @@ package org.aossie.agoravote;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,8 +29,10 @@ public class SignInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
-        mUserNameEditText = findViewById(R.id.editText);
-        mPasswordEditText = findViewById(R.id.editText2);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Login");
+//        mUserNameEditText = findViewById(R.id.editText);
+//        mPasswordEditText = findViewById(R.id.editText2);
         mSigninButton = findViewById(R.id.button);
 
         sharedPrefs = new SharedPrefs(getApplicationContext());
@@ -79,5 +83,23 @@ public class SignInActivity extends AppCompatActivity {
                         Log.d("errorm", "" + error.getMessage());
                     }
                 });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
