@@ -26,4 +26,9 @@ public class SharedPrefs {
     public String getLogedInKey() {
         return sharedPreferences.getString(LogedInKey, null);
     }
+
+    public void clearLogin() {
+        editor.putString(LogedInKey, null);
+        editor.commit();
+    }
 }

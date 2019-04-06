@@ -15,6 +15,7 @@
             android:id="@+id/imageView"
             android:layout_width="120dp"
             android:layout_height="120dp"
+            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,8 +32,9 @@
             android:paddingLeft="16dp"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
             android:id="@+id/email"
@@ -45,8 +47,9 @@
             android:paddingLeft="16dp"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/lastname"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lastname" />
 
         <EditText
             android:id="@+id/firstname"
@@ -59,8 +62,9 @@
             android:paddingLeft="16dp"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/username"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/username" />
 
         <EditText
             android:id="@+id/lastname"
@@ -73,8 +77,9 @@
             android:paddingLeft="16dp"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/firstname"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstname" />
 
         <EditText
             android:id="@+id/password"
@@ -87,8 +92,9 @@
             android:paddingLeft="16dp"
             android:textColor="#000"
             android:textSize="18sp"
-            app:layout_constraintTop_toBottomOf="@+id/email"
-            tools:layout_editor_absoluteX="16dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/email" />
 
         <Button
             android:id="@+id/signup"

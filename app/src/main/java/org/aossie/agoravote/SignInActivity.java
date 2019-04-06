@@ -9,11 +9,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+
+import net.steamcrafted.loadtoast.LoadToast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,6 +26,7 @@ public class SignInActivity extends AppCompatActivity {
     SharedPrefs sharedPrefs;
     private EditText mUserNameEditText, mPasswordEditText;
     private Button mSigninButton;
+    private LoadToast loadToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,20 +35,28 @@ public class SignInActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle("Login");
-//        mUserNameEditText = findViewById(R.id.editText);
-//        mPasswordEditText = findViewById(R.id.editText2);
+        mUserNameEditText = findViewById(R.id.username);
+        mPasswordEditText = findViewById(R.id.password);
         mSigninButton = findViewById(R.id.button);
+        loadToast = new LoadToast(this);
+        loadToast.setText("Logging in");
 
         sharedPrefs = new SharedPrefs(getApplicationContext());
         mSigninButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doSignIn();
+                if (mUserNameEditText.getText().toString().isEmpty())
+                    Toast.makeText(getApplicationContext(), "enter your username", Toast.LENGTH_SHORT).show();
+                else if (mPasswordEditText.getText().toString().isEmpty())
+                    Toast.makeText(getApplicationContext(), "enter your password", Toast.LENGTH_SHORT).show();
+                else
+                    doSignIn();
             }
         });
     }
 
     private void doSignIn() {
+        loadToast.show();
         JSONObject jsonObject = new JSONObject();
         try {
             jsonObject.put("password", mPasswordEditText.getText().toString());
@@ -63,11 +75,12 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         Log.d("response", "" + response);
+                        loadToast.success();
                         try {
                             JSONObject token = response.getJSONObject("token");
                             String key = token.getString("token");
                             sharedPrefs.savePref(key);
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -75,6 +88,8 @@ public class SignInActivity extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError error) {
+                        loadToast.error();
+                        Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
                         // handle error
                         Log.d("errorb", "" + error.getErrorBody());
                         Log.d("errorr", "" + error.getResponse());
