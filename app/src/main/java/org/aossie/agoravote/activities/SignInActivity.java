@@ -1,7 +1,8 @@
-package org.aossie.agoravote;
+package org.aossie.agoravote.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
@@ -13,93 +14,90 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.StringRequestListener;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import net.steamcrafted.loadtoast.LoadToast;
 
+import org.aossie.agoravote.R;
+import org.aossie.agoravote.SharedPrefs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignInActivity extends AppCompatActivity {
 
-    private EditText mUserNameEditText, mFirstNameEditText, mLastNameEditText, mEmailEditText, mPasswordEditText;
-    private Button mSignUpButton;
-    LoadToast loadToast;
+    SharedPrefs sharedPrefs;
+    private EditText mUserNameEditText, mPasswordEditText;
+    private Button mSigninButton;
+    private LoadToast loadToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sign_up);
-        loadToast = new LoadToast(this);
-        loadToast.setText("Creating Account");
+        setContentView(R.layout.activity_sign_in);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle("Login");
         mUserNameEditText = findViewById(R.id.username);
-        mFirstNameEditText = findViewById(R.id.firstname);
-        mLastNameEditText = findViewById(R.id.lastname);
-        mEmailEditText = findViewById(R.id.email);
         mPasswordEditText = findViewById(R.id.password);
-        mSignUpButton = findViewById(R.id.signup);
+        mSigninButton = findViewById(R.id.button);
+        loadToast = new LoadToast(this);
+        loadToast.setText("Logging in");
 
-
-        mSignUpButton.setOnClickListener(new View.OnClickListener() {
+        sharedPrefs = new SharedPrefs(getApplicationContext());
+        mSigninButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (mUserNameEditText.getText().toString().isEmpty())
-                    Toast.makeText(getApplicationContext(), "please enter username", Toast.LENGTH_SHORT).show();
-                else if (mFirstNameEditText.getText().toString().isEmpty())
-                    Toast.makeText(getApplicationContext(), "please enter username", Toast.LENGTH_SHORT).show();
-                else if (mLastNameEditText.getText().toString().isEmpty())
-                    Toast.makeText(getApplicationContext(), "please enter username", Toast.LENGTH_SHORT).show();
-                else if (mEmailEditText.getText().toString().isEmpty())
-                    Toast.makeText(getApplicationContext(), "please enter username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "enter your username", Toast.LENGTH_SHORT).show();
                 else if (mPasswordEditText.getText().toString().isEmpty())
-                    Toast.makeText(getApplicationContext(), "please enter username", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "enter your password", Toast.LENGTH_SHORT).show();
                 else
-                    doSignUp();
+                    doSignIn();
             }
         });
-
     }
 
-    private void doSignUp() {
+    private void doSignIn() {
         loadToast.show();
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("firstName", mFirstNameEditText.getText().toString());
-            jsonObject.put("lastName", mLastNameEditText.getText().toString());
-            jsonObject.put("email", mEmailEditText.getText().toString());
             jsonObject.put("password", mPasswordEditText.getText().toString());
             jsonObject.put("identifier", mUserNameEditText.getText().toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        AndroidNetworking.post("https://agora-rest-api.herokuapp.com/api/v1/auth/signup")
+        AndroidNetworking.post("https://agora-rest-api.herokuapp.com/api/v1/auth/login")
                 .addJSONObjectBody(jsonObject)// posting json
                 .addHeaders("Content-Type", "application/json")
                 .addHeaders("accept", "application/json")
                 .setPriority(Priority.MEDIUM)
                 .build()
-                .getAsString(new StringRequestListener() {
+                .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
-                    public void onResponse(String response) {
-                        // do anything with response
+                    public void onResponse(JSONObject response) {
                         Log.d("response", "" + response);
                         loadToast.success();
-                        Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG).show();
-                        startActivity(new Intent(getApplicationContext(), SignInActivity.class));
+                        try {
+                            JSONObject token = response.getJSONObject("token");
+                            String key = token.getString("token");
+                            sharedPrefs.savePref(key);
+                            startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
                     }
 
                     @Override
                     public void onError(ANError error) {
+                        loadToast.error();
+                        Toast.makeText(getApplicationContext(), "wrong username or password", Toast.LENGTH_SHORT).show();
                         // handle error
                         Log.d("errorb", "" + error.getErrorBody());
                         Log.d("errorr", "" + error.getResponse());
                         Log.d("errord", "" + error.getErrorDetail());
                         Log.d("errorc", "" + error.getErrorCode());
                         Log.d("errorm", "" + error.getMessage());
-                        loadToast.error();
-                        Toast.makeText(getApplicationContext(), "" + error.getErrorBody(), Toast.LENGTH_SHORT).show();
                     }
                 });
     }
@@ -122,4 +120,3 @@ public class SignUpActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
-

@@ -34,6 +34,10 @@
                 android:icon="@drawable/ic_menu_share"
                 android:title="Share" />
             <item
+                android:id="@+id/nav_vote"
+                android:icon="@mipmap/ic_launcher"
+                android:title="Vote Activity" />
+            <item
                 android:id="@+id/nav_aossie"
                 android:icon="@drawable/aossie"
                 android:title="Developed with ❤️ by AOSSIE" />

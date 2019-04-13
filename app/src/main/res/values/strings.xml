@@ -7,4 +7,5 @@
     <string name="nav_header_subtitle">agora-vote@aossie.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_logout">Log out</string>
+    <string name="lorem">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam …...</string>
 </resources>

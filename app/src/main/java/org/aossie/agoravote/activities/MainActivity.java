@@ -1,4 +1,4 @@
-package org.aossie.agoravote;
+package org.aossie.agoravote.activities;
 
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -8,6 +8,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import org.aossie.agoravote.R;
+import org.aossie.agoravote.SharedPrefs;
 
 public class MainActivity extends AppCompatActivity {
 

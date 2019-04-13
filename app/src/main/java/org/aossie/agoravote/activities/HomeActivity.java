@@ -1,4 +1,4 @@
-package org.aossie.agoravote;
+package org.aossie.agoravote.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import org.aossie.agoravote.R;
+import org.aossie.agoravote.SharedPrefs;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -81,6 +84,8 @@ public class HomeActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_help) {
 
+        } else if (id == R.id.nav_vote) {
+            startActivity(new Intent(getApplicationContext(), VoteActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
