@@ -19,11 +19,13 @@ import java.util.List;
 
 public class VoteActivity extends AppCompatActivity implements ItemClickListener {
 
-    RecyclerView recyclerView1, recyclerView2;
-    RecyclerViewAdapter1 adapter1;
-    RecyclerViewAdapter2 adapter2;
-    List<String> strings1, strings2;
-    Toolbar toolbar;
+    private RecyclerView recyclerView1;
+    private RecyclerView recyclerView2;
+    private RecyclerViewAdapter1 adapter1;
+    private RecyclerViewAdapter2 adapter2;
+    private List<String> strings1;
+    private List<String> strings2;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

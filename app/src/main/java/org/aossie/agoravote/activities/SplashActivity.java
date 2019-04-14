@@ -14,10 +14,10 @@ import org.aossie.agoravote.SharedPrefs;
 
 public class SplashActivity extends AppCompatActivity {
 
-    Button mGetStartedButton;
-    TextView mWelcomeTextView;
-    ImageView mAgoraImageView;
-    SharedPrefs sharedPrefs;
+    private Button mGetStartedButton;
+    private TextView mWelcomeTextView;
+    private ImageView mAgoraImageView;
+    private SharedPrefs sharedPrefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

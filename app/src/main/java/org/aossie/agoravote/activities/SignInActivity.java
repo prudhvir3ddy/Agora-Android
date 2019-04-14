@@ -23,11 +23,12 @@ import org.aossie.agoravote.SharedPrefs;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Objects;
+
 public class SignInActivity extends AppCompatActivity {
 
-    SharedPrefs sharedPrefs;
+    private SharedPrefs sharedPrefs;
     private EditText mUserNameEditText, mPasswordEditText;
-    private Button mSigninButton;
     private LoadToast loadToast;
 
     @Override
@@ -36,10 +37,10 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
 
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setTitle("Login");
+        Objects.requireNonNull(actionBar).setTitle("Login");
         mUserNameEditText = findViewById(R.id.username);
         mPasswordEditText = findViewById(R.id.password);
-        mSigninButton = findViewById(R.id.button);
+        Button mSigninButton = findViewById(R.id.button);
         loadToast = new LoadToast(this);
         loadToast.setText("Logging in");
 

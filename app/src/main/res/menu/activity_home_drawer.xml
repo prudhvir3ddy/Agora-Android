@@ -7,40 +7,40 @@
         <item
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_man_user"
-            android:title="Profile" />
+            android:title="@string/profile" />
         <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_baseline_code_24px"
-            android:title="About" />
+            android:title="@string/about" />
         <item
             android:id="@+id/nav_help"
             android:icon="@drawable/baseline_help_black_24dp"
-            android:title="Help" />
+            android:title="@string/help" />
 
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="@string/communicate">
         <menu>
             <item
                 android:id="@+id/nav_report"
                 android:icon="@drawable/ic_baseline_bug_report_24px"
-                android:title="Report a bug" />
+                android:title="@string/report_a_bug" />
             <item
                 android:id="@+id/nav_contributors"
                 android:icon="@drawable/ic_contributors"
-                android:title="Contributors" />
+                android:title="@string/contributors" />
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
+                android:title="@string/share" />
             <item
                 android:id="@+id/nav_vote"
                 android:icon="@mipmap/ic_launcher"
-                android:title="Vote Activity" />
+                android:title="@string/vote_activity" />
             <item
                 android:id="@+id/nav_aossie"
                 android:icon="@drawable/aossie"
-                android:title="Developed with ❤️ by AOSSIE" />
+                android:title="@string/developed_with_by_aossie" />
         </menu>
     </item>
 

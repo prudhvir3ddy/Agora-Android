@@ -32,9 +32,10 @@
         android:backgroundTint="#FCD116"
         android:drawableLeft="@android:drawable/ic_input_add"
         android:drawableTint="@android:color/white"
-        android:text="Create Election"
+        android:layout_margin="@dimen/fab_margin"
         android:textColor="@android:color/white"
-        android:layout_margin="@dimen/fab_margin" />
+        android:text="@string/create_election"
+        tools:targetApi="lollipop" />
 
 
 </android.support.design.widget.CoordinatorLayout>

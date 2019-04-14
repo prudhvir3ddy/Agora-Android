@@ -14,12 +14,14 @@
         android:translationZ="6dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        tools:targetApi="lollipop">
 
         <ImageView
             android:layout_width="38dp"
             android:layout_height="38dp"
             android:layout_marginLeft="56dp"
+            android:contentDescription="TODO"
             android:src="@drawable/agora" />
 
         <TextView
@@ -28,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:gravity="center"
-            android:text="Cast Your Vote"
+            android:text="@string/cast_your_vote"
             android:textColor="@android:color/white"
             android:textSize="20sp" />
     </android.support.v7.widget.Toolbar>
@@ -40,7 +42,7 @@
         <android.support.constraint.ConstraintLayout
             android:id="@+id/constraint"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingTop="56dp">
 
             <Button
@@ -79,7 +81,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="5dp"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textSize="18sp" />
 
                 <TextView
@@ -95,7 +97,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="120dp"
-                    android:text="Start"
+                    android:text="@string/start"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -104,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="16dp"
                     android:layout_marginTop="160dp"
-                    android:text="End"
+                    android:text="@string/end"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
@@ -143,14 +145,15 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/card1">
+                app:layout_constraintTop_toBottomOf="@+id/card1"
+                tools:targetApi="lollipop">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
-                    android:text="Your ballot"
+                    android:text="@string/your_ballot"
                     android:textColor="@android:color/white"
                     android:textSize="22sp" />
 
@@ -162,7 +165,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="press and hold to move Candidates up or down to change preference"
+                    android:text="@string/press_and_hold_to_move_candidates_up_or_down_to_change_preference"
                     android:textColor="@android:color/white" />
             </android.support.v7.widget.CardView>
 
@@ -179,14 +182,15 @@
                 android:translationZ="5dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/election_desc_card">
+                app:layout_constraintTop_toBottomOf="@id/election_desc_card"
+                tools:targetApi="lollipop">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="5dp"
-                    android:text="Candidates"
+                    android:text="@string/candidates"
                     android:textColor="@android:color/white"
                     android:textSize="22sp" />
 
@@ -198,7 +202,7 @@
                     android:layout_marginTop="15dp"
                     android:layout_marginRight="16dp"
                     android:gravity="center"
-                    android:text="Press the plus button to add candidate to your ballot"
+                    android:text="@string/press_the_plus_button_to_add_candidate_to_your_ballot"
                     android:textColor="@android:color/white" />
             </android.support.v7.widget.CardView>
 
@@ -269,13 +273,14 @@
                 android:backgroundTint="#E53A36"
                 android:bottomLeftRadius="10dp"
                 android:bottomRightRadius="10dp"
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="@android:color/white"
                 android:topLeftRadius="10dp"
                 android:topRightRadius="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+                app:layout_constraintTop_toBottomOf="@+id/cardView"
+                tools:targetApi="lollipop" />
 
             <Button
                 android:id="@+id/button2"
@@ -287,12 +292,13 @@
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/rounded_button"
                 android:backgroundTint="#008751"
-                android:text="Vote"
+                android:text="@string/vote"
                 android:textColor="@android:color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cardView"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.0"
+                tools:targetApi="lollipop" />
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>

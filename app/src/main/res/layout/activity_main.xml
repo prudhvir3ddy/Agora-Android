@@ -15,6 +15,7 @@
         android:layout_marginTop="64dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="TODO"
         app:srcCompat="@drawable/agora" />
 
     <TextView
@@ -26,7 +27,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:text="Agora Vote"
+        android:text="@string/agora_vote"
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,7 +45,7 @@
         android:layout_marginRight="24dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
-        android:text="SIGN UP"
+        android:text="@string/sign_up"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -64,14 +65,15 @@
         android:layout_marginBottom="16dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="#3B5998"
-        android:text="CONTINUE WITH FACEBOOK"
+        android:text="@string/continue_with_facebook"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/signin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="lollipop" />
 
     <Button
         android:id="@+id/signin"
@@ -84,11 +86,12 @@
         android:layout_marginBottom="48dp"
         android:background="@drawable/rounded_button"
         android:backgroundTint="#FCD116"
-        android:text="LOG IN"
+        android:text="@string/log_in"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:targetApi="lollipop" />
 </android.support.constraint.ConstraintLayout>

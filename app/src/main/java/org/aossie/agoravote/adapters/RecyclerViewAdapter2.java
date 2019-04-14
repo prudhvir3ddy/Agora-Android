@@ -16,8 +16,8 @@ import java.util.List;
 
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.RecyclerViewHolder> {
 
-    List<String> strings;
-    Context context;
+    private final List<String> strings;
+    private final Context context;
     private ItemClickListener clickListener;
 
     public RecyclerViewAdapter2(Context context, List<String> strings) {
@@ -29,8 +29,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @Override
     public RecyclerViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.item_vote, viewGroup, false);
-        RecyclerViewHolder viewHolder = new RecyclerViewHolder(view);
-        return viewHolder;
+        return new RecyclerViewHolder(view);
     }
 
     @Override
@@ -52,10 +51,10 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView textView1;
-        ImageView imageView;
+        final TextView textView1;
+        final ImageView imageView;
 
-        public RecyclerViewHolder(@NonNull View itemView) {
+        RecyclerViewHolder(@NonNull View itemView) {
             super(itemView);
 
             textView1 = itemView.findViewById(R.id.textView11);

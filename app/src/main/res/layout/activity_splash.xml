@@ -22,6 +22,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.492"
+        android:contentDescription="TODO"
         app:srcCompat="@drawable/agora" />
 
     <Button
@@ -35,7 +36,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/rounded_button"
         android:onClick="getStarted"
-        android:text="GET STARTED"
+        android:text="@string/get_started"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -52,7 +53,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="50dp"
-        android:text="WELCOME TO AGORA VOTE"
+        android:text="@string/welcome_to_agora_vote"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/getstarted"

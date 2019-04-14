@@ -52,7 +52,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:paddingLeft="16dp"
-                    android:text="Total Elections"
+                    android:text="@string/total_elections"
                     android:textColor="@android:color/white"
                     android:textSize="26sp" />
             </RelativeLayout>
@@ -98,7 +98,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:paddingLeft="16dp"
-                    android:text="Total Pending Elections"
+                    android:text="@string/total_pending_elections"
                     android:textColor="@android:color/white"
                     android:textSize="26sp" />
             </RelativeLayout>
@@ -144,7 +144,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:paddingLeft="16dp"
-                    android:text="Total Active Elections"
+                    android:text="@string/total_active_elections"
                     android:textColor="@android:color/white"
                     android:textSize="26sp" />
             </RelativeLayout>
@@ -192,7 +192,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginRight="16dp"
                     android:paddingLeft="16dp"
-                    android:text="Total Finished Elections"
+                    android:text="@string/total_finished_elections"
                     android:textColor="@android:color/white"
                     android:textSize="26sp" />
             </RelativeLayout>

@@ -14,9 +14,11 @@ import org.aossie.agoravote.SharedPrefs;
 
 public class MainActivity extends AppCompatActivity {
 
-    SharedPrefs sharedPrefs;
-    TextView mAgoraTextView;
-    Button mSigninButton, mFacebookButton, mSignupButton;
+    private SharedPrefs sharedPrefs;
+    private TextView mAgoraTextView;
+    private Button mSigninButton;
+    private Button mFacebookButton;
+    private Button mSignupButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

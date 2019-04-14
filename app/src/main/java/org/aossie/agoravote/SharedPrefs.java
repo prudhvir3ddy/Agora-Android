@@ -5,11 +5,11 @@ import android.content.SharedPreferences;
 
 public class SharedPrefs {
 
-    public static final String myPrefs = "myprefs";
-    public static final String LogedInKey = "Key";
-    Context context;
-    SharedPreferences sharedPreferences;
-    SharedPreferences.Editor editor;
+    private static final String myPrefs = "myprefs";
+    private static final String LogedInKey = "Key";
+    private final Context context;
+    private final SharedPreferences sharedPreferences;
+    private final SharedPreferences.Editor editor;
 
 
     public SharedPrefs(Context context) {

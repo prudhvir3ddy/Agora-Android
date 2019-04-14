@@ -24,8 +24,7 @@ import org.json.JSONObject;
 public class SignUpActivity extends AppCompatActivity {
 
     private EditText mUserNameEditText, mFirstNameEditText, mLastNameEditText, mEmailEditText, mPasswordEditText;
-    private Button mSignUpButton;
-    LoadToast loadToast;
+    private LoadToast loadToast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,7 @@ public class SignUpActivity extends AppCompatActivity {
         mLastNameEditText = findViewById(R.id.lastname);
         mEmailEditText = findViewById(R.id.email);
         mPasswordEditText = findViewById(R.id.password);
-        mSignUpButton = findViewById(R.id.signup);
+        Button mSignUpButton = findViewById(R.id.signup);
 
 
         mSignUpButton.setOnClickListener(new View.OnClickListener() {

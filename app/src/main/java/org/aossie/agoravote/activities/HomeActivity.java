@@ -17,7 +17,7 @@ import org.aossie.agoravote.SharedPrefs;
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    SharedPrefs sharedPrefs;
+    private SharedPrefs sharedPrefs;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
