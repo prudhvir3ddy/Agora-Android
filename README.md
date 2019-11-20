@@ -7,7 +7,7 @@ this is just a demo project. original project is at https://gitlab.com/aossie/ag
 ## prototype 
 https://xd.adobe.com/view/999dcd6f-7451-4057-611d-f7dea4d5987c-efac/
 
-#### Screenshots
+#### Designs
 
 <table>
    <tr>
